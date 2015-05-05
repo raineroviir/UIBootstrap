@@ -10,9 +10,21 @@ var server = http.createServer(function(req, res) {
 
     if (req.method === "POST") {
       console.log('post');
+      var body = '';
       req.on('data', function(data) {
-        var body = JSON.parse(data.toString('utf-8'));
-        res.write(JSON.stringify({msg: 'hello ' + body.name}));
+        body += data.toString('utf-8');
+      });
+      req.on('end', function(data) {
+        body += data ? data.toString('utf-8') : '';
+        var parsedBody;
+        try {
+          parsedBody = JSON.parse(body);
+        } catch(e) {
+          console.log(e);
+          res.write(JSON.parse({msg: 'invalid json'}));
+          return res.end();
+        }
+        res.write(JSON.stringify({msg: 'hello ' + parsedBody.name}));
         res.end();
       });
     } else {
