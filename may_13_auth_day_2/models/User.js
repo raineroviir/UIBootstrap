@@ -24,4 +24,8 @@ userSchema.methods.generateToken = function(secret, callback) {
   eat.encode({id: this._id}, secret, callback);
 };
 
+userSchema.methods.owns = function(obj) {
+  return obj.authorId === this._id;
+};
+
 module.exports = mongoose.model('User', userSchema);
