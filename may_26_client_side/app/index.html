@@ -5,9 +5,10 @@
   <title>Client Side</title>
 </head>
 <body>
-  <h1>Hello World!</h1>
-  <ul id="notelist"></ul>
-
+  <main data-ng-app="notesApp">
+    <h1>{{greeting}}</h1>
+    <input type="text" data-ng-model="greeting">  
+  </main>
   <script src="bundle.js"></script>
 </body>
 </html>
