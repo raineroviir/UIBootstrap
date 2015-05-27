@@ -4,11 +4,19 @@
   <meta charset="UTF-8">
   <title>Client Side</title>
 </head>
-<body>
-  <main data-ng-app="notesApp">
+<body data-ng-app="notesApp">
+  <main data-ng-controller="notesController">
     <h1>{{greeting}}</h1>
     <input type="text" data-ng-model="greeting">  
+    <button data-ng-click="displayGreeting()">Alert!</button>
+    <section data-ng-controller="oneMoreController">
+      <h2>Nested: {{greeting}}</h2>
+    </section>
   </main>
+  <section data-ng-controller="anotherController">
+    <h1>Part two: {{greeting}}</h1>
+    <input type="text" data-ng-model="greeting">
+  </section>
   <script src="bundle.js"></script>
 </body>
 </html>
