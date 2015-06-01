@@ -3,3 +3,4 @@
 **/*.log
 **/db/
 **/build/
+**/bundle.js
