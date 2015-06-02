@@ -4,6 +4,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.initConfig({
     webpack: {
@@ -30,6 +31,12 @@ module.exports = function(grunt) {
       }
     },
 
+    karma: {
+      test: {
+        configFile: 'karma.conf.js'
+      }
+    },
+
     copy: {
       html: {
         cwd: 'app/',
@@ -50,5 +57,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build:dev', ['webpack:client', 'copy:html']);
   grunt.registerTask('build', ['build:dev']);
+  grunt.registerTask('karmatest', ['webpack:karma_test', 'karma:test']);
   grunt.registerTask('default', ['build']);
 };
