@@ -7,45 +7,44 @@
 
 <body data-ng-app="notesApp">
 
-
-
-<div>
-
   <accordion close-others="oneAtATime">
-    <accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+    <accordion-group heading="Stuff 1" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
 
-      <div ng-controller="CarouselDemoCtrl">
-  <div style="height: 305px">
-    <carousel interval="myInterval">
-      <slide ng-repeat="slide in slides" active="slide.active">
-        <img ng-src="{{slide.image}}" style="margin:auto;">
-        <div class="carousel-caption">
-          <h4>Slide {{$index}}</h4>
-          <p>{{slide.text}}</p>
-        </div>
-      </slide>
-    </carousel>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
+  <div ng-controller="CarouselDemoCtrl">
+
+    <div style="height: 305px">
+      <carousel interval="myInterval">
+        <slide ng-repeat="slide in slides" active="slide.active">
+          <img ng-src="{{slide.image}}" style="margin:auto;">
+          <div class="carousel-caption">
+            <h4>Slide {{$index}}</h4>
+            <p>{{slide.text}}</p>
+          </div>
+        </slide>
+      </carousel>
     </div>
-    <div class="col-md-6">
-      Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
-      <br />Enter a negative number or 0 to stop the interval.
+    <div class="row">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
+      </div>
+      <div class="col-md-6">
+        Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
+        <br />Enter a negative number or 0 to stop the interval.
+      </div>
     </div>
   </div>
-</div>
 
     </accordion-group>
-    <accordion-group heading="Dynamic Body Content">
-      <p>The body of the accordion group grows to fit the contents</p>
+    <accordion-group heading="Notes">
+
 
     <div ng-controller="AlertDemoCtrl">
+
     <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 
+
+
     <main data-ng-controller="notesController" data-ng-init="getAll()">
-    <section data-simple-directive></section>
     
     <aside data-ng-if="errors.length">
       <h2>Errors:</h2>
@@ -55,11 +54,9 @@
       <button data-ng-click="clearErrors()">Clear Errors</button>
     </aside>
 
-
-
     <form novalidate name="newNoteForm" data-ng-submit="createNewNote()">
       <input type="text" required data-ng-model="newNote.noteBody">
-      <button class="btn btn-primary" ng-click="addAlert('success')" type="submit" data-ng-disabled="newNoteForm.$invalid">Create New Note</button>
+      <button class="btn btn-primary" ng-click="addAlert('success', 'Note Added Successfully!')" type="submit" data-ng-disabled="newNoteForm.$invalid">Create New Note</button>
     </form> 
 
     <ul data-ng-repeat="note in notes">
@@ -78,8 +75,6 @@
   </accordion>
 </div>
 
-
-</div>
 
   </main>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">

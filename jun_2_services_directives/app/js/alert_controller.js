@@ -4,11 +4,10 @@ module.exports = function(app) {
   $scope.alerts = [];
   $scope.errorAlerts = [];
 
-  $scope.addAlert = function(type) {
+  $scope.addAlert = function(type, msg) {
     $scope.alerts = [];
-    $scope.alerts.push({type: type, msg: 'Note Added Successfully!'});
+    $scope.alerts.push({type: type, msg: msg});
   };
-
 
   $scope.closeAlert = function(index) {
     $scope.alerts.splice(index, 1);
