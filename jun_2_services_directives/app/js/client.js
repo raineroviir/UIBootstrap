@@ -1,7 +1,7 @@
 'use strict';
 
 require('angular/angular');
-require('/home/rainer/class-folder/sea-d37/jun_2_services_directives/bower_components/angular-bootstrap/ui-bootstrap-tpls'); //*************
+require('/home/rainer/class-folder/sea-d37/jun_2_services_directives/bower_components/angular-bootstrap/ui-bootstrap-tpls'); //*************if your app isn't working its likely because you need to make this require go to the absolute path for this component. That's how I fixed it.  I don't know why it needs an absolute path.
 
 var notesApp = angular.module('notesApp', ['ui.bootstrap']);
 
